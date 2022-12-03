@@ -24,5 +24,5 @@ A mixture of C# and Java solutions for [Advent of Code](https://adventofcode.com
 - [ ]  Day 21 
 - [ ]  Day 22 
 - [ ]  Day 23 
-- []   Day 24 
+- [ ]   Day 24 
 
