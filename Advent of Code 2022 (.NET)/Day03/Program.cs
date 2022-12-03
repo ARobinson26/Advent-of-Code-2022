@@ -2,81 +2,86 @@
 {
     public static void Main(string[] args)
     {
-        string[] lines = File.ReadAllLines("/Users/aaronrobinson/repos/Advent-of-Code-2022/Advent of Code 2022 (.NET)/Day03/inputs.txt");
-        List<char> backpack1 = new List<char>();
-        List<char> backpack2 = new List<char>();
-        int priorityTotal = 0;
-        int lineCounter = 1;
-        List<char> duplicates = new List<char>();
-        List<char> duplicateBadges = new List<char>();
-        int badgeTotal = 0;
+        string[] rucksacks = File.ReadAllLines(
+            "/Users/aaronrobinson/repos/Advent-of-Code-2022/Advent of Code" +
+            " 2022 (.NET)/Day03/inputs.txt");
+
+        List<char> compartment1 = new List<char>();
+        List<char> compartment2 = new List<char>();
         
+        List<char> duplicateItems = new List<char>();
+        List<char> duplicateBadges = new List<char>();
 
-        foreach (string line in lines)
+        int linePointer = 1;
+
+        int priorityTotal = 0;
+        int badgeTotal = 0;
+
+        foreach (string rucksack in rucksacks)
         {
-
-            //On every third line
-            if (lineCounter % 3 == 0)
+            //On every third line, look for common items in three rucksacks.
+            if (linePointer % 3 == 0)
             {
-                foreach(char item in line.ToCharArray())
+                foreach(char item in rucksack.ToCharArray())
                 {
-                    if (lines[lineCounter - 3].ToCharArray().Contains(item)
-                        && lines[lineCounter - 2].ToCharArray().Contains(item)
-                        && !duplicateBadges.Contains(item)
+                    if (rucksacks[linePointer - 3].ToCharArray().Contains(item)
+                        &&
+                        rucksacks[linePointer - 2].ToCharArray().Contains(item)
+                        &&
+                        !duplicateBadges.Contains(item)
                         )
                     {
                         duplicateBadges.Add(item);
-                        if (item <= 90)
-                        {
-                            badgeTotal += (item - 38);
-                        }
-                        else
-                        {
-                            badgeTotal += (item - 96);
-                        }
+
+                        badgeTotal += GetPriorityValue(item);   
                     }
                 }
+
                 duplicateBadges.Clear();
             }
 
+            compartment1.Clear();
+            compartment2.Clear();
+            duplicateItems.Clear();
 
-            backpack1.Clear();
-            backpack2.Clear();
-            duplicates.Clear();
+            int backpackSize = rucksack.Length / 2;
 
-            int backpackSize = line.Length / 2;
-
-            for (int x=0; x<(backpackSize); x++)
+            //Adds each item from the rucksack into correct compartment array.
+            for (int x=0; x<backpackSize; x++)
             {
-                backpack1.Add(line.ToCharArray()[x]);
-                backpack2.Add(line.ToCharArray()[x+backpackSize]);
+                compartment1.Add(rucksack.ToCharArray()[x]);
+                compartment2.Add(rucksack.ToCharArray()[x+backpackSize]);
             }
 
-            foreach (char item in backpack1)
+            //Look for common items in both compartments of backpack.
+            foreach (char item in compartment1)
             {
-                
-
-                if (backpack2.Contains(item) && !duplicates.Contains(item))
+                if (compartment2.Contains(item) && !duplicateItems.Contains(item))
                 {
-                    duplicates.Add(item);
+                    duplicateItems.Add(item);
 
-                    if (item <= 90)
-                    {
-                        priorityTotal += (item - 38);
-                    } else
-                    {
-                        priorityTotal += (item - 96);
-                    }
-                }
-
-                
+                    priorityTotal += GetPriorityValue(item);
+                } 
             }
-            lineCounter++;
-        }
 
+            linePointer++;
+        }
 
         Console.WriteLine(priorityTotal);
         Console.WriteLine(badgeTotal);
+    }
+
+    //Returns the 'priority' value by converting ASCII value.
+    public static int GetPriorityValue(char item)
+    {
+        if (item <= 90)
+        {
+            return (item - 38);
+        }
+        else
+        {
+            return (item - 96);
+        }
     }
 };
 
