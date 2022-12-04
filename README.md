@@ -4,7 +4,7 @@ A mixture of C# and Java solutions for [Advent of Code](https://adventofcode.com
 - [ ]  Day 01
 - [ ]  Day 02
 - [x]  Day 03 (C#)
-- [ ]  Day 04 
+- [x]  Day 04 (C#) 
 - [ ]  Day 05 
 - [ ]  Day 06 
 - [ ]  Day 07 
