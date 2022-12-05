@@ -5,7 +5,7 @@ A mixture of C# and Java solutions for [Advent of Code](https://adventofcode.com
 - [ ]  Day 02
 - [x]  Day 03 (C#)
 - [x]  Day 04 (C#) 
-- [ ]  Day 05 
+- [x]  Day 05 (C#) 
 - [ ]  Day 06 
 - [ ]  Day 07 
 - [ ]  Day 08 
