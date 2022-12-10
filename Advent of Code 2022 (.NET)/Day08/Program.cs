@@ -14,9 +14,7 @@ foreach (string line in inputLines)
     }
 
     rows.Add(row);
-
 }
-
 
 int visibleTrees = 0;//(rows.Count() * 2);
 int rowPointer = 0;
@@ -41,12 +39,6 @@ for (int y=0; y<rows.Count(); y++)
         int visibleTreesToBottom = 0;
 
         int visibilityScore = 0;
-
-        //bool blockedLeft = false;
-        //bool blockedRight;
-        //bool blockedTop;
-        //bool blockedBottom;
-
 
         if (i != 0)
         {
