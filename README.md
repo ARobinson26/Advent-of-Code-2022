@@ -8,7 +8,7 @@ A mixture of C# and Java solutions for [Advent of Code](https://adventofcode.com
 - [x]  Day 05 (C#) 
 - [x]  Day 06 (C#) 
 - [x]  Day 07 (C#)
-- [ ]  Day 08 
+- [x]  Day 08 (C#)
 - [ ]  Day 09 
 - [ ]  Day 10 
 - [ ]  Day 11 
